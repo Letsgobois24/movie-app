@@ -34,10 +34,10 @@ const CardList = ({ movies }) => {
             ))}
 
             {/* Custom navigation buttons */}
-            <div className="custom-prev left-0 top-1/2 -translate-y-1/2">
+            <div className="custom-prev left-2 top-1/2 -translate-y-1/2">
                 ❮
             </div>
-            <div className="custom-next right-0 top-1/2 -translate-y-1/2">
+            <div className="custom-next right-2 top-1/2 -translate-y-1/2">
                 ❯
             </div>
         </Swiper>
