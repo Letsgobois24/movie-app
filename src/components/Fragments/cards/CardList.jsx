@@ -1,10 +1,8 @@
 import CardMovie from "./CardMovie"
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
 
 const CardList = ({ movies }) => {
 
@@ -23,9 +21,6 @@ const CardList = ({ movies }) => {
                 1024: {
                     slidesPerView: 4
                 },
-                1280: {
-                    slidesPerView: 5
-                },
             }}
             navigation={{
                 nextEl: '.custom-next',
@@ -33,8 +28,8 @@ const CardList = ({ movies }) => {
             }}
         >
             {movies.map(movie => (
-                <SwiperSlide>
-                    <CardMovie key={movie.id} title={movie.original_title} imgPath={movie.poster_path} />
+                <SwiperSlide key={movie.id}>
+                    <CardMovie title={movie.original_title} imgPath={movie.poster_path} />
                 </SwiperSlide>
             ))}
 
