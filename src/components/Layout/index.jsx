@@ -3,12 +3,7 @@ import Sidebar from "./Sidebar";
 import Header from "./Header";
 
 const Layout = ({children}) => {
-  const [isToggleSidebar, setIsToggleSidebar] = useState(true);
-
-  useEffect(() => {
-    const isMd = window.innerWidth >= 768;
-    setIsToggleSidebar(isMd);
-  }, []);
+  const [isToggleSidebar, setIsToggleSidebar] = useState(false);
 
   return (
     <div className="relative h-screen overflow-hidden">

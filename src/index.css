@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+.custom-next, .custom-prev {
+  @apply border border-light text-lg absolute z-10 px-5 py-3 bg-dark text-light rounded-full hover:bg-gray-600 cursor-pointer;
+}
+
+.swiper-button-disabled {
+  @apply hidden;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
