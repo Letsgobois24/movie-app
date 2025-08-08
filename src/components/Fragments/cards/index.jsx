@@ -1,9 +1,10 @@
 import CardList from "./CardList";
+import Title from "../../Elements/Title";
 
 const MovieSection = ({ movies, title }) => {
     return (
         <section>
-            <h1 className="mb-2 font-bold text-dark text-2xl">{title}</h1>
+            <Title>{title}</Title>
             <CardList movies={movies} />
         </section>
     )

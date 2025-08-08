@@ -29,7 +29,7 @@ const CardList = ({ movies }) => {
         >
             {movies.map(movie => (
                 <SwiperSlide key={movie.id}>
-                    <CardMovie title={movie.original_title} imgPath={movie.poster_path} />
+                    <CardMovie movie={movie} />
                 </SwiperSlide>
             ))}
 

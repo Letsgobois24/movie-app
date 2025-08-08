@@ -15,7 +15,7 @@ const Sidebar = ({ isOpen, onClickToggle }) => {
         ☰
       </div>
 
-      <h2 className="text-xl font-bold mt-0.5 mb-6 mx-2">My Sidebar</h2>
+      <h2 className="text-xl font-bold mt-0.5 mb-6 mx-2">Movie App</h2>
       <SidebarList />
       
     </aside>

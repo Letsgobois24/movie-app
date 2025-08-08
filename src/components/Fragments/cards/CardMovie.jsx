@@ -1,17 +1,31 @@
 import { Link } from "react-router-dom";
+import Icon from "../../Elements/Icon";
 
-const CardMovie = ({title, imgPath}) => {
+const CardMovie = ({movie}) => {
     const BASEIMG = import.meta.env.VITE_BASEIMGURL;
-    
+    const movieDetailUrl = '/movie/' + movie.id;
+
+    const addToWatchlist = (e) => {
+        e.preventDefault();
+        console.log('hello');
+    }
+
     return (
-        <div className="swiper bg-light group hover:bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden transition duration-250">
-            <Link to="#">
-            <div className="overflow-hidden">
-                <img className="rounded-t-lg group-hover:scale-125 transition duration-250" src={BASEIMG + imgPath} alt="" />
+        <div className="swiper bg-light group hover:bg-white border border-gray-200 rounded-lg shadow-sm transition overflow-hidden">
+            <Link to={movieDetailUrl}>
+            <div className="overflow-hidden relative">
+                <button className="flex group translate-y-full group-hover:translate-y-0 transition cursor-pointer p-1.5 bg-dark absolute left-0 bottom-0 z-1 rounded-tr-lg">
+                    <Icon icon="star" size="13" className="text-yellow-500" />
+                    <p className="ms-1 text-xs font-bold text-light">{movie.vote_average.toFixed(1)}</p>
+                </button>
+                <button onClick={(e) => addToWatchlist(e)} className="-translate-y-full group-hover:translate-y-0 transition cursor-pointer bg-dark absolute right-0 z-1 rounded-bl-lg rounded-tr-lg">
+                    <Icon icon="watchlist" size="20" className="text-light m-1.5 hover:text-yellow-500" />
+                </button>
+                <img className="rounded-t-lg group-hover:scale-120 transition" src={BASEIMG + movie.poster_path} alt="" />
             </div>
-            </Link>
-            <Link to="#" className="p-5 inline-block w-full">
-                <h5 className="min-h-24 mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{title}</h5>
+            <div className="p-5 inline-block w-full">
+                <h5 className="min-h-24 mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{movie.title}</h5>
+            </div>
             </Link>
         </div>
     )

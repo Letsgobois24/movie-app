@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -10,13 +10,17 @@ const Jumbotron = ({movies}) => {
     console.log(movies);
     return (
         <Swiper
-            modules={[Navigation, Pagination]}
+            modules={[Navigation, Pagination, Autoplay]}
             slidesPerView={1}
             navigation={{
                 nextEl: '.custom-next',
                 prevEl: '.custom-prev',
             }}
             pagination={{ clickable: true }}
+            autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+            }}
         >
             {movies.map(movie => (
                 <SwiperSlide key={movie.id}>
