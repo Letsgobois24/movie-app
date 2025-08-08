@@ -4,7 +4,7 @@ const Sidebar = ({ isOpen, onClickToggle }) => {
   return (
     <aside
       className={`p-4 fixed inset-y-0 left-0 transform bg-dark text-light transition-transform duration-300 ease-in-out
-          w-68 md:translate-x-0 md:relative z-10
+          w-68 md:translate-x-0 md:relative z-15
           ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
     >
       {/* Tombol tutup */}
