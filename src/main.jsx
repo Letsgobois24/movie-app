@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 import HomePage from './Pages/Home'
 import DetailPage from './Pages/Detail'
+import { WatchListProvider } from './context/WatchListContext'
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <WatchListProvider>
+      <RouterProvider router={router} />
+    </WatchListProvider>
   </StrictMode>,
 )

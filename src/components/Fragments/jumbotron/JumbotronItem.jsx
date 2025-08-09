@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Button from "../../Elements/Button";
 import Icon from "../../Elements/Icon";
 
 const JumbotronItem = ({ movie }) => {
@@ -17,15 +18,15 @@ const JumbotronItem = ({ movie }) => {
                 </div>
                 <div className="flex space-x-3 sm:flex-row justify-center sm:space-y-0">
                     <Link to={`/movie/${movie.id}`}>
-                        <button className="inline-flex cursor-pointer justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300">
+                        <Button color='blue'>
                             <Icon icon="play" size="24" className="text-white mr-1" />
                             Play
-                        </button>
+                        </Button>
                     </Link>
                     <Link to={`/movie/${movie.id}`}>
-                        <button className="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-lg border border-white cursor-pointer hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
-                        Detail
-                        </button>
+                        <Button color='transparent'>
+                            Detail
+                        </Button>
                     </Link>
                 </div>
             </div>

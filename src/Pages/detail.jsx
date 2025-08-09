@@ -13,7 +13,7 @@ const DetailPage = () => {
             setMovie(res.data)
             console.log(res.data)
         });
-    }, []);
+    }, [id]);
 
     return (
         <Layout>

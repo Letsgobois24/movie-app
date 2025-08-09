@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
 import Icon from "../../Elements/Icon";
+import { useWatchList } from "../../../context/WatchListContext";
 
 const CardMovie = ({movie}) => {
     const BASEIMG = import.meta.env.VITE_BASEIMGURL;
     const movieDetailUrl = '/movie/' + movie.id;
-
-    const addToWatchlist = (e) => {
+    const { addToWatchList } = useWatchList();
+    
+    const handleAddToWatchlist = (e) => {
         e.preventDefault();
-        console.log('hello');
+        addToWatchList(movie);
     }
 
     return (
@@ -18,7 +20,7 @@ const CardMovie = ({movie}) => {
                     <Icon icon="star" size="13" className="text-yellow-500" />
                     <p className="ms-1 text-xs font-bold text-light">{movie.vote_average.toFixed(1)}</p>
                 </button>
-                <button onClick={(e) => addToWatchlist(e)} className="-translate-y-full group-hover:translate-y-0 transition cursor-pointer bg-dark absolute right-0 z-1 rounded-bl-lg rounded-tr-lg">
+                <button onClick={(e) => handleAddToWatchlist(e)} className="-translate-y-full group-hover:translate-y-0 transition cursor-pointer bg-dark absolute right-0 z-1 rounded-bl-lg rounded-tr-lg">
                     <Icon icon="watchlist" size="20" className="text-light m-1.5 hover:text-yellow-500" />
                 </button>
                 <img className="rounded-t-lg group-hover:scale-120 transition" src={BASEIMG + movie.poster_path} alt="" />
