@@ -7,7 +7,6 @@ import JumbotronItem from "./JumbotronItem";
 
 
 const Jumbotron = ({movies}) => {
-    console.log(movies);
     return (
         <Swiper
             modules={[Navigation, Pagination, Autoplay]}

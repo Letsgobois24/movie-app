@@ -1,4 +1,5 @@
 import SidebarList from "../Fragments/SidebarList";
+import NavbarButton from "../Elements/NavbarButton";
 
 const Sidebar = ({ isOpen, onClickToggle }) => {
   return (
@@ -7,17 +8,13 @@ const Sidebar = ({ isOpen, onClickToggle }) => {
           w-68 md:translate-x-0 md:relative z-15
           ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
     >
-      {/* Tombol tutup */}
-      <div
-        onClick={onClickToggle}
-        className="text-2xl absolute right-2 top-2 w-12 h-12 cursor-pointer rounded-full hover:bg-slate-600 flex justify-center items-center md:hidden"
-      >
-        ☰
-      </div>
+      <NavbarButton className='md:hidden absolute right-2 top-2' onClick={onClickToggle}>
+        <span className="text-2xl">☰</span>
+      </NavbarButton>
 
       <h2 className="text-xl font-bold mt-0.5 mb-6 mx-2">Movie App</h2>
       <SidebarList />
-      
+
     </aside>
   );
 };

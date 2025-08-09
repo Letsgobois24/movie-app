@@ -11,7 +11,6 @@ const DetailPage = () => {
     useEffect(() => {
         getMovieDetail(id).then((res) => {
             setMovie(res.data)
-            console.log(res.data)
         });
     }, [id]);
 
