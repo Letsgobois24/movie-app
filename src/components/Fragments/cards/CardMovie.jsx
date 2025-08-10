@@ -18,7 +18,7 @@ const CardMovie = ({movie}) => {
             <div className="overflow-hidden relative flex flex-col">
                 <button className="flex group translate-y-full group-hover:translate-y-0 transition cursor-pointer p-1.5 bg-dark absolute left-0 bottom-0 z-1 rounded-tr-lg">
                     <Icon icon="star" size="13" className="text-yellow-500" />
-                    <p className="ms-1 text-xs font-bold text-light">{movie.vote_average.toFixed(1)}</p>
+                    <p className="ms-1 text-xs font-bold text-light">{movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A'}</p>
                 </button>
                 <button onClick={(e) => handleAddToWatchlist(e)} className="-translate-y-full group-hover:translate-y-0 transition cursor-pointer bg-dark absolute right-0 z-1 rounded-bl-lg rounded-tr-lg">
                     <Icon icon="watchlist" size="20" className="text-light m-1.5 hover:text-yellow-500" />

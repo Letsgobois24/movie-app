@@ -13,8 +13,8 @@ export const getMovieDetail = async(id) => {
     return movies;
 }
 
-export const getMovieSearch = async(query) => {
-    const movies = await axios.get(`${BASEURL}/search/movie?query=${query}&api_key=${APIKEY}`);
+export const getMovieSearch = async(query, page = 1) => {
+    const movies = await axios.get(`${BASEURL}/search/movie?query=${query}&page=${page}&api_key=${APIKEY}`);
     return movies;
 }
 
@@ -23,7 +23,7 @@ export const getGenreList = async() => {
     return movies;
 }
 
-export const getMoviesByGenre = async(genreId) => {
-    const movies = await axios.get(`${BASEURL}/discover/movie?with_genres=${genreId}&api_key=${APIKEY}`);
+export const getMoviesByGenre = async(genreId, page) => {
+    const movies = await axios.get(`${BASEURL}/discover/movie?with_genres=${genreId}&page=${page}&api_key=${APIKEY}`);
     return movies;
 }

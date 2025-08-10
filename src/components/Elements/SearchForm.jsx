@@ -9,7 +9,11 @@ const SearchForm = () => {
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
-        navigate(`/search?query=${query.trim()}`);
+        if(query && query.trim() != ''){
+            navigate(`/search?query=${query.trim()}`);
+        } else {
+            navigate('/');
+        }
     }
 
     return (

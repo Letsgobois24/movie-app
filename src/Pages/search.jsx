@@ -5,6 +5,7 @@ import { getMovieSearch, getMoviesByGenre, getGenreList } from "../services/movi
 import BadgeList from "../components/Fragments/BadgeList";
 import CardMovie from "../components/Fragments/cards/CardMovie";
 import Title from "../components/Elements/Title";
+import Pagination from "../components/Fragments/pagination";
 
 const SearchPage = () => {
     const location = useLocation();
@@ -16,20 +17,30 @@ const SearchPage = () => {
 
     const [genreList, setGenreList] = useState([]);
     const [movies, setMovies] = useState([]);
+    const [currentPage, setCurrentPage] = useState(3);
+    const [totalResult, setTotalResult] = useState({ totalPages: 0, totalResult: 0 })
+
+    const setMoviesData = (res) => {
+        setMovies(res.data.results);
+        setTotalResult({
+            totalPages: res.data.total_pages,
+            totalResults: res.data.total_results,
+            moviesPerPage: res.data.results.length
+        })
+    }
 
     useEffect(() => {
-        if(query){
-            getMovieSearch(query)
-                .then(res => setMovies(res.data.results));
+        if (query) {
+            getMovieSearch(query, currentPage)
+                .then(res => setMoviesData(res));
         } else {
-            getMoviesByGenre(genreId)
-                .then(res => setMovies(res.data.results));
+            getMoviesByGenre(genreId, currentPage)
+                .then(res => setMoviesData(res));
         }
-    }, [query, genreId]);
+    }, [query, genreId, currentPage]);
 
-    useEffect(() => {
-        getGenreList().then((res) => setGenreList(res.data.genres));
-    }, [])
+    useEffect(() => setCurrentPage(1), [query]);
+    useEffect(() => getGenreList().then((res) => setGenreList(res.data.genres)), [])
 
     return (
         <Layout>
@@ -37,13 +48,14 @@ const SearchPage = () => {
                 <BadgeList genres={genreList} />
             </div>
             <div className="mt-4 ml-6">
-                <Title>{query ? `Search: ${query}` : `Genre: ${genreName}` }</Title>
+                <Title>{query ? `Search: ${query}` : `Genre: ${genreName}`}</Title>
             </div>
             <section className="grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 gap-[10px] px-6">
                 {movies.map(movie => (
-                    <CardMovie key={movie.id} movie={movie}/>
+                    <CardMovie key={movie.id} movie={movie} />
                 ))}
             </section>
+            <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalResult={totalResult} />
         </Layout>
     );
 }
