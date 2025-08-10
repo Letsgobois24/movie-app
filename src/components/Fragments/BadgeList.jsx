@@ -2,9 +2,9 @@ import Badge from '../Elements/Badge';
 
 const BadgeList = ({genres}) => {
     return (
-        <div className='flex flex-wrap gap-2'>
+        <div className='flex gap-2 overflow-x-scroll scrollbar-hide'>
             {genres ?.map(genre => (
-                <Badge key={genre.id}>{genre.name}</Badge>
+                <Badge key={genre.id} genre={genre} />
             ))}
         </div>
     );

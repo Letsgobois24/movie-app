@@ -12,7 +12,7 @@ const WatchlistPanel = ({isOpenWatchlist, setIsOpenWatchlist}) => {
     }
 
     return (
-        <div className={`${isOpenWatchlist ? '' : 'hidden'} z-10 py-2 min-w-sm absolute -bottom-0.5 right-7 translate-y-full text-light bg-dark rounded-md`} onMouseLeave={() => setIsOpenWatchlist(false)}>
+        <div className={`${isOpenWatchlist ? '' : 'hidden'} z-10 py-2 max-w-sm min-w-20 absolute -bottom-0.5 right-7 translate-y-full text-light bg-dark rounded-md`} onMouseLeave={() => setIsOpenWatchlist(false)}>
             {watchList.length > 0 ? watchList.map(movie => (
                 <Link key={movie.id} to={'/movie/' + movie.id}>
                     <div className="py-2 border-b border-t border-light cursor-pointer hover:bg-slate-700">
