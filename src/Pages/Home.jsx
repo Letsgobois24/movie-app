@@ -23,7 +23,7 @@ const HomePage = () => {
 
   return (
     <Layout>
-      <Jumbotron movies={newMovies}/>
+      <Jumbotron movies={newMovies} />
       <div className="flex flex-col gap-6 p-6">
         <BadgeList genres={genreList} />
         <MovieSection movies={newMovies} title='Now Playing🔥' />

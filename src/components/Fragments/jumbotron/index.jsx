@@ -4,37 +4,40 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import JumbotronItem from "./JumbotronItem";
+import JumbotronSkeleton from "./JumbotronSkeleton";
 
-
-const Jumbotron = ({movies}) => {
+const Jumbotron = ({ movies }) => {
     return (
-        <Swiper
-            modules={[Navigation, Pagination, Autoplay]}
-            slidesPerView={1}
-            navigation={{
-                nextEl: '.custom-next',
-                prevEl: '.custom-prev',
-            }}
-            pagination={{ clickable: true }}
-            autoplay={{
-                delay: 3000,
-                disableOnInteraction: false,
-            }}
-        >
-            {movies.map(movie => (
-                <SwiperSlide key={movie.id}>
-                    <JumbotronItem movie={movie} />
-                </SwiperSlide>
-            ))}
+        <>
+            {movies.length == 0 && <JumbotronSkeleton />}
+            <Swiper
+                modules={[Navigation, Pagination, Autoplay]}
+                slidesPerView={1}
+                navigation={{
+                    nextEl: '.custom-next',
+                    prevEl: '.custom-prev',
+                }}
+                pagination={{ clickable: true }}
+                autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
+                }}
+            >
+                {movies.map(movie => (
+                    <SwiperSlide key={movie.id}>
+                        <JumbotronItem movie={movie} />
+                    </SwiperSlide>
+                ))}
 
-            {/* Custom navigation buttons */}
-            <div className="custom-prev left-4 top-1/2 -translate-y-1/2">
-                ❮
-            </div>
-            <div className="custom-next right-4 top-1/2 -translate-y-1/2">
-                ❯
-            </div>
-        </Swiper>
+                {/* Custom navigation buttons */}
+                <div className="custom-prev left-4 top-1/2 -translate-y-1/2">
+                    ❮
+                </div>
+                <div className="custom-next right-4 top-1/2 -translate-y-1/2">
+                    ❯
+                </div>
+            </Swiper>
+        </>
     )
 }
 

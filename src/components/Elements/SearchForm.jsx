@@ -4,7 +4,7 @@ import Icon from "./Icon";
 
 const SearchForm = () => {
     const [searchParams] = useSearchParams();
-    const [query, setQuery] = useState(searchParams.get("query"));
+    const [query, setQuery] = useState(searchParams.get("query") || '');
     const navigate = useNavigate();
 
     const handleSubmitForm = (e) => {

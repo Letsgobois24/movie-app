@@ -10,10 +10,10 @@ const DetailPage = () => {
 
     useEffect(() => {
         getMovieDetail(id).then((res) => {
-            setMovie(res.data)
+            setMovie(res.data);
         });
     }, [id]);
-
+    
     return (
         <Layout>
             <div className="p-6">

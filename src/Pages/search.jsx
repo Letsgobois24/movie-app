@@ -3,9 +3,10 @@ import Layout from "../components/Layout";
 import { useSearchParams, useLocation } from "react-router-dom";
 import { getMovieSearch, getMoviesByGenre, getGenreList } from "../services/movies.service";
 import BadgeList from "../components/Fragments/BadgeList";
-import CardMovie from "../components/Fragments/cards/CardMovie";
+import CardMovie, { CardMovieSkeleton } from "../components/Fragments/cards/CardMovie";
 import Title from "../components/Elements/Title";
 import Pagination from "../components/Fragments/pagination";
+import { CardListSkeleton } from "../components/Fragments/cards/CardList";
 
 const SearchPage = () => {
     const location = useLocation();
@@ -40,7 +41,7 @@ const SearchPage = () => {
     }, [query, genreId, currentPage]);
 
     useEffect(() => setCurrentPage(1), [query]);
-    useEffect(() => getGenreList().then((res) => setGenreList(res.data.genres)), [])
+    useEffect(() => { getGenreList().then((res) => setGenreList(res.data.genres)) }, [])
 
     return (
         <Layout>
@@ -50,7 +51,12 @@ const SearchPage = () => {
             <div className="mt-4 ml-6">
                 <Title>{query ? `Search: ${query}` : `Genre: ${genreName}`}</Title>
             </div>
-            <section className="grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 gap-[10px] px-6">
+            <section className="grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 gap-2.5 px-6">
+                {movies.length == 0 &&
+                    Array(8).fill(0).map((_, index) => (
+                        <CardMovieSkeleton key={index} />
+                    ))
+                }
                 {movies.map(movie => (
                     <CardMovie key={movie.id} movie={movie} />
                 ))}

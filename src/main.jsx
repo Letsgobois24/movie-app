@@ -1,3 +1,5 @@
+import { SkeletonTheme } from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
@@ -25,7 +27,9 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <WatchListProvider>
-      <RouterProvider router={router} />
+      <SkeletonTheme baseColor="#9fbfa0" highlightColor="#cde8c2">
+        <RouterProvider router={router} />
+      </SkeletonTheme>
     </WatchListProvider>
   </StrictMode>,
 )

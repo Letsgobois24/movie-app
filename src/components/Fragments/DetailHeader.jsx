@@ -3,6 +3,7 @@ import Icon from '../Elements/Icon';
 import Button from '../Elements/Button';
 import BadgeList from './BadgeList';
 import { useWatchList } from '../../context/WatchListContext';
+import Skeleton from 'react-loading-skeleton';
 
 const DetailHeader = ({ movie }) => {
     const { addToWatchList } = useWatchList();
@@ -11,7 +12,7 @@ const DetailHeader = ({ movie }) => {
     return (
         <section className="flex flex-col md:flex-row w-full items-center">
             <img className="object-cover w-full rounded-lg md:min-h-96 md:w-64" src={movie.poster_path ? BASEIMG + movie.poster_path : '/image/no-image.png'} alt="" />
-            <div className="flex flex-col py-4 px-0 md:px-8 leading-normal">
+            <div className="w-full flex flex-col py-4 px-0 md:px-8 leading-normal">
                 <div className='mb-2 flex md:flex-row flex-col md:items-center justify-between'>
                     <div>
                         <Title size='4xl'>{movie.title}</Title>
@@ -19,16 +20,16 @@ const DetailHeader = ({ movie }) => {
                     <div>
                         <div className='flex items-center mt-4 md:mt-0 min-h-12'>
                             <Icon icon='star' size='36' className='text-yellow-300 mr-1' />
-                            <h3 className='text-3xl mr-1.5 font-semibold'>{movie.vote_average}</h3>
+                            <h3 className='text-3xl mr-1.5 font-semibold'>{movie.vote_average || <Skeleton width={60} />}</h3>
                             <span className='self-end text-xl text-gray-700'>/10</span>
                         </div>
-                        <p className='text-gray-600 text-xs'>{movie.vote_count} peoples rated</p>
+                        <p className='text-gray-600 text-xs'>{movie.vote_count ?  `${movie.vote_count} peoples rated` : <Skeleton />} </p>
                     </div>
                 </div>
                 <div className='mb-3'>
-                    <BadgeList genres={movie.genres} />
+                    <BadgeList genres={movie.genres || []} count={3} />
                 </div>
-                <p className="mb-3 font-normal text-gray-700">{movie.overview}</p>
+                <p className="mb-3 font-normal text-gray-700">{movie.overview || <Skeleton count={3} />}</p>
                 <div className='flex space-x-3 mt-1'>
                     <Button color='blue'>
                         <Icon icon="play" size="24" className="text-white mr-1" />

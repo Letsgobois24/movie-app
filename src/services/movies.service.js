@@ -14,7 +14,7 @@ export const getMovieDetail = async(id) => {
 }
 
 export const getMovieSearch = async(query, page = 1) => {
-    const movies = await axios.get(`${BASEURL}/search/movie?query=${query}&page=${page}&api_key=${APIKEY}`);
+    const movies = await axios.get(`${BASEURL}/search/movie?include_adult=true&query=${query}&page=${page}&api_key=${APIKEY}`);
     return movies;
 }
 
@@ -24,6 +24,6 @@ export const getGenreList = async() => {
 }
 
 export const getMoviesByGenre = async(genreId, page) => {
-    const movies = await axios.get(`${BASEURL}/discover/movie?with_genres=${genreId}&page=${page}&api_key=${APIKEY}`);
+    const movies = await axios.get(`${BASEURL}/discover/movie?include_adult=true&with_genres=${genreId}&page=${page}&api_key=${APIKEY}`);
     return movies;
 }

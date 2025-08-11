@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import Button from "../../Elements/Button";
 import Icon from "../../Elements/Icon";
+import Skeleton from "react-loading-skeleton";
+
 
 const JumbotronItem = ({ movie }) => {
     const BASEIMG = import.meta.env.VITE_BASEIMGURL;
@@ -8,7 +10,7 @@ const JumbotronItem = ({ movie }) => {
     return (
         <section className="bg-center h-[calc(100vh-64px)] bg-no-repeat bg-gray-700 bg-blend-multiply bg-cover" style={{ backgroundImage: `url(${BASEIMG + movie.backdrop_path})` }}>
             <div className="px-4 mx-auto max-w-screen-xl text-center py-40">
-                <h1 className="mb-4 text-4xl font-extrabold tracking-tight text-white md:text-5xl lg:text-6xl min-h-20 flex items-center justify-center">{movie.title}</h1>
+                <h1 className="mb-4 text-4xl font-extrabold tracking-tight text-white md:text-5xl lg:text-6xl min-h-20 flex items-center justify-center">{movie.title || <Skeleton />}</h1>
                 <p className="mb-4 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">{movie.overview.substring(0, 120)}...</p>
                 <div className="mb-4 flex items-center justify-center">
                     <Icon icon="star" size="16" className="text-yellow-300 mr-1" />

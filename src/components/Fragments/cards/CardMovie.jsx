@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Icon from "../../Elements/Icon";
 import { useWatchList } from "../../../context/WatchListContext";
+import Skeleton from "react-loading-skeleton";
 
 const CardMovie = ({movie}) => {
     const BASEIMG = import.meta.env.VITE_BASEIMGURL;
@@ -26,11 +27,22 @@ const CardMovie = ({movie}) => {
                 <img className="h-80 w-full object-cover rounded-t-lg group-hover:scale-120 transition" src={movie.poster_path ? BASEIMG + movie.poster_path : '/image/no-image.png'} alt="" />
             </div>
             <div className="p-5 inline-block w-full">
-                <h5 className="min-h-24 mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{movie.title}</h5>
+                <h5 className="min-h-24 mb-2 text-2xl font-bold tracking-tight text-gray-900">{movie.title}</h5>
             </div>
             </Link>
         </div>
-    )
+    );
 }
 
 export default CardMovie;
+
+export const CardMovieSkeleton = () => {
+    return (
+        <div className="rounded-lg bg-light border border-gray-200">
+            <Skeleton height={320} />
+            <div className="min-h-24 mb-2 p-5">
+                <Skeleton className="text-2xl" width={200} />
+            </div>
+        </div>
+    );
+}
