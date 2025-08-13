@@ -1,5 +1,4 @@
-import Icon from "../../Elements/Icon";
-import PaginationItem from "./paginationItem";
+import PaginationItem from "./PaginationItem";
 
 const Pagination = ({currentPage, setCurrentPage, totalResult}) => {
     const firstMovieNumber = ((currentPage - 1) * 20) + 1;
