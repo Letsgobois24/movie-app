@@ -6,9 +6,9 @@ const SidebarList = () => {
             <SidebarItem to="/" icon='home' >
                 Home
             </SidebarItem>
-            <SidebarItem to="/profile" icon='profile' >
+            {/* <SidebarItem to="/profile" icon='profile' >
                 Profile
-            </SidebarItem>
+            </SidebarItem> */}
         </nav>
     );
 }

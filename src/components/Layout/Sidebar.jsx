@@ -11,8 +11,10 @@ const Sidebar = ({ isOpen, onClickToggle }) => {
       <NavbarButton className='md:hidden absolute right-2 top-2' onClick={onClickToggle}>
         <span className="text-2xl">☰</span>
       </NavbarButton>
-
-      <h2 className="text-xl font-bold mt-0.5 mb-6 mx-2">Movie App</h2>
+      
+      <div className="mt-4 mb-8">
+        <img src="/movie-logo.png" alt="Movie Logo" className="w-4/5 mx-auto" />
+      </div>
       <SidebarList />
 
     </aside>
