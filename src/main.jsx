@@ -4,9 +4,9 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
-import HomePage from './Pages/home';
-import DetailPage from './Pages/detail';
-import SearchPage from './Pages/search';
+import HomePage from './Pages/home.jsx';
+import DetailPage from './Pages/detail.jsx';
+import SearchPage from './Pages/search.jsx';
 import { WatchListProvider } from './context/WatchListContext'
 
 const router = createBrowserRouter([
